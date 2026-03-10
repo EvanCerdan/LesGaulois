@@ -1,0 +1,58 @@
+package personnages;
+
+import test_fonctionnel.TestGaulois;
+
+public class Druide {
+
+	// Attributs 
+    private String nom;
+    private Integer force;
+    private Chaudron chaudron;
+    
+
+    // Constructeur Druide 
+    public Druide(String nom, Integer force) {
+        this.nom = nom;
+        this.force = force;
+        this.chaudron = new Chaudron();
+    }
+
+    // Méthode parler 
+    public void parler(String texte) {
+        System.out.println(prendreParole() + texte);
+    }
+
+    // Méthode privée (- sur diagramme) 
+    private String prendreParole() {
+    	return "Le Druide " + nom + " : ";
+    }
+
+    // Méthode fabriquerPotion
+    public void fabriquerPotion(Integer quantite, Integer forcePotion) {
+    	chaudron.remplirChaudron(quantite, forcePotion);
+        parler("J'ai concocté " + quantite + " doses de potion magique. Elle a une force de " + forcePotion + ".");
+    }
+
+    // Méthode booster
+    public void booster(Gaulois gaulois) {
+    	if (chaudron.restePotion()) {
+            if (gaulois.getNom() == "Obélix") {
+        		System.out.println("Non, Obélix Non !... Et tu le sais très bien !");
+        	} else {
+        		System.out.println("Tiens " + gaulois.getNom() + " un peu de potion magique.");
+        		gaulois.boirePotion(chaudron.prendreLouche());
+        	}
+        } else {
+            parler("Désolé " + gaulois.getNom() + ", il n'y a plus de potion !");
+        }
+    	
+    	
+    	
+    	
+    }
+
+    // Méthode getNom
+    public String getNom() {
+        return nom;
+    }
+}
