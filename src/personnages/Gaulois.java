@@ -1,12 +1,14 @@
 package personnages;
 
+import village_gaulois.Village;
+
 public class Gaulois {
 	
 	// Attributs 
 	public String nom;
 	private Integer force;
 	private Integer effetPotion = 1;
-	
+	private Village village;
 	
 	// Contructeur de Gaulois 
 	public Gaulois(String nom, int force) {
@@ -15,9 +17,14 @@ public class Gaulois {
 		this.force = force;
 	}
 	
-
+	// Setters village
+	public void setVillage(Village village) {
+	    this.village = village;
+	}
 	
-	// Méthode avoir le nom
+	// Méthodes 
+	
+	// Méthode getNom
 	public String getNom() {
 		return nom;
 	}
@@ -26,12 +33,12 @@ public class Gaulois {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
 
-	// Méthode prendre parole
+	// Méthode prendreParole
 	private String prendreParole() {
 		return "Le gaulois " + nom + " : ";
 	}
 	
-	// Print de l'objet astgerix
+	// Print de l'objet asterix
 	public static void main(String[] args) {
 		Gaulois asterix = new Gaulois("Astérix", 8);
 		System.out.println(asterix);
@@ -60,6 +67,26 @@ public class Gaulois {
 	public void boirePotion(Integer forcePotion) {
 	    effetPotion = forcePotion;
 	}
+	
+	
+	// Méthode sePrésenter
+	public void sePresenter() {
+	    System.out.print("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom + ". ");
+
+	    // Cas 1 : sans village
+	    if (village == null) {
+	        System.out.println("Je voyage de villages en villages.\"");
+	    }
+	    // Cas 2 : chef du village
+	    else if (village.getChef() == this) {
+	        System.out.println("Je suis le chef du village : " + village.getNom() + ".\"");
+	    }
+	    // Cas 3 : habitant normal
+	    else {
+	        System.out.println("J'habite le village : " + village.getNom() + ".\"");
+	    }
+	}
+	
 	
 	
 	

@@ -19,10 +19,13 @@ public class Chaudron {
 
     // Méthode prendreLouche 
     public Integer prendreLouche() {
-    	if (restePotion()) {
+        if (this.restePotion()) {
             quantitePotion--;
             return forcePotion;
         }
         return 0;
     }
+	
+    
+    
 }

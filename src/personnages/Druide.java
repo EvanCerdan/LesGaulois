@@ -10,19 +10,21 @@ public class Druide {
     private Chaudron chaudron;
     
 
-    // Constructeur Druide 
+    // Constructeur de Druide 
     public Druide(String nom, Integer force) {
         this.nom = nom;
         this.force = force;
         this.chaudron = new Chaudron();
     }
 
+    // Méthodes 
+    
     // Méthode parler 
     public void parler(String texte) {
         System.out.println(prendreParole() + texte);
     }
 
-    // Méthode privée (- sur diagramme) 
+    // Méthode privée prendreParole (- sur diagramme) 
     private String prendreParole() {
     	return "Le Druide " + nom + " : ";
     }
@@ -48,11 +50,6 @@ public class Druide {
     	
     	
     	
-    	
     }
 
-    // Méthode getNom
-    public String getNom() {
-        return nom;
-    }
-}
+

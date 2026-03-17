@@ -12,6 +12,9 @@ public class Romain {
 		this.force = force;
 	}
 	
+	// Méthodes 
+	
+	
 	// Méthode pour avoir le nom 
 	public String getNom() {
 		return nom;
@@ -28,7 +31,6 @@ public class Romain {
 	}
 	
 	// Méthode pour recevoir un coup
-	
 	public void recevoirCoup(int forceCoup) {
 		// Un romain perd de la force après un coup
 		force = force - forceCoup;
