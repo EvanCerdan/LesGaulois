@@ -10,6 +10,7 @@ public class Romain {
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
+		assert isInvariantVerified() : "Force invalide (doit être >= 0)";
 	}
 	
 	// Méthodes 
@@ -32,14 +33,40 @@ public class Romain {
 	
 	// Méthode pour recevoir un coup
 	public void recevoirCoup(int forceCoup) {
+		assert forceCoup > 0 : "La force du coup doit être positive";
+		
+		// Sauvegarde de l'ancienne force
+	    int ancienneForce = force;
+	    
 		// Un romain perd de la force après un coup
 		force = force - forceCoup;
 		
 		if (force < 1) {
+			force = 0; // éviter la force négative
 			parler("J'abandonne !");
 		} else {
 			parler("Aïe");
 		}
+		
+		// Postcondition
+	    assert force <= ancienneForce : "La force n'a pas diminué";
+	    
+		// Vérification de l’invariant
+	    assert isInvariantVerified() : "Invariant violé : force négative";
+	}
+	
+	// Méthode privée d'Invariant
+	private boolean isInvariantVerified() {
+	    return force >= 0;
+	}
+	
+	// Main
+	public static void main(String[] args) {
+	    Romain minus = new Romain("Minus", 6);
+	    
+	    Romain r1 = new Romain("Minus", 10);
+	    r1.recevoirCoup(-5); // erreur pour forcecoup négative
+	     
 	}
 
 }

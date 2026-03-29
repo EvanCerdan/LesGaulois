@@ -12,36 +12,17 @@ public class Village {
     private int nbVillageois = 0;
     private Gaulois chef;
     private Gaulois[] villageois;
-	
-    // Getters 
-    public String getNom() {
-		return nom;
-	}
     
-    public Gaulois getChef() {
-		return chef;
-	}
+    // Constructeurs 
     
-	// Setters
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+ 	// Contructeur de village
+ 	public Village(String nom, Gaulois chef) {
+ 		this.nom = nom;
+ 		this.chef = chef;
+        this.villageois = new Gaulois[NB_VILLAGEOIS_MAX]; // A enelever pour voir ERR
+        this.chef.setVillage(this);
 
-
-	public void setChef(Gaulois chef) {
-		this.chef = chef;
-	}
-	// Constructeurs 
-	
-	
-	// Contructeur de village
-	public Village(String nom, Gaulois chef) {
-		this.nom = nom;
-		this.chef = chef;
-        this.villageois = new Gaulois[30]; // A enelever pour voir ERR
-        chef.setVillage(this);
-
-	}
+ 	}
 	
 	// Méthodes 
 	
@@ -125,6 +106,24 @@ public class Village {
 	}
 	
 	
+    // Getters 
+    public String getNom() {
+		return this.nom;
+	}
+    
+    public Gaulois getChef() {
+		return this.chef;
+	}
+    
+	// Setters
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public void setChef(Gaulois chef) {
+		this.chef = chef;
+	}
 }
     
     
