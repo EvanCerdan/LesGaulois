@@ -7,9 +7,9 @@ public class Romain {
 	private String nom;
 	private int force;
 	
-		// tableau équipements qui à deux cases 
+	// tableau équipements qui à deux cases 
 	private Equipement[] equipements = new Equipement[2];
-		// entier nbEquiements init à 0
+	// entier nbEquiements init à 0
 	private int nbEquipements = 0;
 	
 	// Constructeur de Romain
@@ -20,11 +20,6 @@ public class Romain {
 	}
 	
 	// Méthodes 
-	
-	// Méthode pour avoir le nom 
-	public String getNom() {
-		return nom;
-	}
 
 	// Méthode pour parler
 	public void parler(String texte) {
@@ -96,55 +91,61 @@ public class Romain {
 	    }
 	}
 	
-	// méthode rajoutée
-	 public Equipement[] recevoirCoup(int forceCoup) {
-	        Equipement[] equipementEjecte = null;
+	// méthode recevoirCoup 
+	public Equipement[] recevoirCoup(int forceCoup) {
+	    Equipement[] equipementEjecte = null;
 
-	        forceCoup = calculResistanceEquipement(forceCoup);
-	        
-	        if (forceCoup < 0) {
-	            forceCoup = 0;
-	        }
-
-	        force -= forceCoup;
-
-	        if (force <= 0) {
-	            force = 0;
-	            parler("J'abandonne...");
-	            equipementEjecte = ejecterEquipement();
-	        } else {
-	            parler("Aïe");
-	        }
-
-	        return equipementEjecte;
+	    forceCoup = calculResistanceEquipement(forceCoup);
+	    
+	    if (forceCoup < 0) {
+	        forceCoup = 0;
 	    }
+
+	    force -= forceCoup;
+
+	    if (force <= 0) {
+	        force = 0;
+	        parler("J'abandonne...");
+	        equipementEjecte = ejecterEquipement();
+	    } else {
+	        parler("Aïe");
+	    }
+
+	    return equipementEjecte;
+	}
 
 	
-	    // Calcul résistance 
+	 // Calcul résistance 
 	 private int calculResistanceEquipement(int forceCoup) {
-	        String texte = "Ma force est de " + this.force +
-	                ", et la force du coup est de " + forceCoup;
+		    String texte = "Ma force est de " + this.force +
+		            ", et la force du coup est de " + forceCoup;
 
-	        int resistanceEquipement = 0;
+		    int resistanceEquipement = 0;
 
-	        if (nbEquipements != 0) {
-	            texte += "\nMais heureusement, grâce à mon équipement sa force est diminuée de ";
+		    if (nbEquipements != 0) {
+		        texte += "\nMais heureusement, grâce à mon équipement sa force est diminuée de ";
 
-	            for (int i = 0; i < nbEquipements; i++) {
-	                if (equipements[i] == Equipement.BOUCLIER) {
-	                    resistanceEquipement += 8;
-	                } else {
-	                    resistanceEquipement += 5;
-	                }
-	            }
+		        for (int i = 0; i < nbEquipements; i++) {
+		            if (equipements[i] == Equipement.BOUCLIER) {
+		                resistanceEquipement += 6;
+		            } else {
+		                resistanceEquipement += 3;
+		            }
+		        }
 
-	            texte += resistanceEquipement + "!";
-	        }
+		        texte += resistanceEquipement + "!";
+		    }
 
-	        parler(texte);
+		    parler(texte);
 
-	        return forceCoup - resistanceEquipement;
-	    }
+		    int resultat = forceCoup - resistanceEquipement;
+
+		    if (resultat < 0) {
+		        resultat = 0;
+		    }
+
+		    return resultat;
+		}
 
 	    // Ejecter équipement
 	    private Equipement[] ejecterEquipement() {
@@ -179,4 +180,17 @@ public class Romain {
 	     
 	}
 
+	// Getters
+    public String getNom() {
+        return nom;
+    }
+
+    public int getForce() {
+        return force;
+    }
+
+    // Setters 
+    public void setForce(int force) {
+        this.force = force;
+    }
 }

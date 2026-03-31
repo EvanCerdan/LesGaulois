@@ -1,7 +1,5 @@
 package personnages;
 
-import test_fonctionnel.TestGaulois;
-
 public class Druide {
 
 	// Attributs 
@@ -21,7 +19,7 @@ public class Druide {
     
     // Méthode parler 
     public void parler(String texte) {
-        System.out.println(prendreParole() + texte);
+        System.out.println(prendreParole() + "\"" + texte + "\"");
     }
 
     // Méthode privée prendreParole (- sur diagramme) 
@@ -37,19 +35,17 @@ public class Druide {
 
     // Méthode booster
     public void booster(Gaulois gaulois) {
-    	if (chaudron.restePotion()) {
-            if (gaulois.getNom() == "Obélix") {
-        		System.out.println("Non, Obélix Non !... Et tu le sais très bien !");
-        	} else {
-        		System.out.println("Tiens " + gaulois.getNom() + " un peu de potion magique.");
-        		gaulois.boirePotion(chaudron.prendreLouche());
-        	}
+        if (chaudron.restePotion()) {
+            if (gaulois.getNom().equals("Obélix")) {
+                parler("Non, Obélix ! Non !... Et tu le sais très bien !");
+            } else {
+                parler("Tiens " + gaulois.getNom() + ", un peu de potion magique.");
+                gaulois.boirePotion(chaudron.prendreLouche());
+            }
         } else {
             parler("Désolé " + gaulois.getNom() + ", il n'y a plus de potion !");
         }
-    	
-    	
-    	
     }
+}
 
 

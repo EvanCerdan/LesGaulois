@@ -21,29 +21,14 @@ public class Gaulois {
 		this.force = force;
 	}
 	
-	// Setters village
-	public void setVillage(Village village) {
-	    this.village = village;
-	}
-
-	
 	// Méthodes 
 	
-	// Méthode getNom
-	public String getNom() {
-		return nom;
-	}
+
 	// Méthode parler
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
 
-	// Méthode prendreParole
-	/* private String prendreParole() {
-		return "Le gaulois " + nom + " : ";
-	}  
-	*/
-	
 	
 	// Print de l'objet asterix
 	public static void main(String[] args) {
@@ -57,21 +42,6 @@ public class Gaulois {
 		return "Gaulois [nom=" + nom + ", effetPotion=" + effetPotion + ", force=" + force + "]";
 	}
 	
-	
-	// Méthode frapper un romain 
-	/*
-	public void frapper(Romain romain) {
-	    int forceCoup = (force * effetPotion) / 3;
-
-	    System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-
-	    romain.recevoirCoup(forceCoup);
-
-	    if (effetPotion > 1) {
-	        effetPotion--;
-	    }
-	} 
-	*/
 	
 	// Méthode boirePotion
 	public void boirePotion(Integer forcePotion) {
@@ -98,17 +68,18 @@ public class Gaulois {
 	    }
 	}
 	
-	// méthodoe rajoutée (TP3)
+	
+	// méthode prendreParole
 	private String prendreParole() {
 	    return "Le gaulois " + nom + " : ";
 	}
 	
-	// méthode rajoutée (TP3)	
+	// méthode frapper un Romain
 	public void frapper(Romain romain) {
 	    System.out.println(nom + " envoie un grand coup dans la mâchoire de "
 	            + romain.getNom());
 
-	    Equipement[] tropheesGagnes = romain.recevoirCoup((force / 3) * effetPotion);
+	    Equipement[] tropheesGagnes = romain.recevoirCoup((force / 2) * effetPotion);
 
 	    effetPotion--;
 
@@ -124,7 +95,17 @@ public class Gaulois {
 	    }
 	}
 	
+	// Getters & Setters 
 	
+	// Setters village
+	public void setVillage(Village village) {
+	    this.village = village;
+	}
+
+	// Getters nom
+	public String getNom() {
+		return nom;
+	}
 	
 		
 	
